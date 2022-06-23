@@ -6,7 +6,14 @@ class App extends Component {
     "This is list sample.",
     "これはリストのサンプルです。",
     "配列をリストに変換します。",
+    "追加した要素",
   ];
+
+  // data = [
+  //   { key: "1", value: "This is list sample." },
+  //   { key: "2", value: "これはリストのサンプルです。" },
+  //   { key: "3", value: "配列をリストに変換します。" },
+  // ];
 
   msgStyle = {
     fontSize: "20pt",
@@ -27,7 +34,11 @@ class App extends Component {
       <div>
         <h1>React</h1>
         <h2 style={this.msgStyle}>show list.</h2>
-        <List title="サンプル・リスト" data={this.data} />
+        <List
+          title="サンプル・リスト"
+          title2="サンプル・リスト２"
+          data={this.data}
+        />
       </div>
     );
   }
@@ -47,12 +58,14 @@ class List extends Component {
     return (
       <div>
         <p style={this.title}>{this.props.title}</p>
+        <p style={this.title}>{this.props.title2}</p>
         <ul>
           {data.map((item) => (
-            <Item value={item} key={this.number} />
-            // <Item number={this.number++} value={item} key={this.number} />
+            // <Item value={item} key={this.number} />
+            <Item number={this.number++} key={this.number} value={item} />
           ))}
         </ul>
+        <p>data = {data}</p>
       </div>
     );
   }
@@ -73,9 +86,10 @@ class Item extends Component {
 
   render() {
     return (
-      <li>
+      <li style={this.li}>
         <span style={this.num}>[{this.props.number}]</span>
         {this.props.value}
+        {/* {this.props.key.toString} */}
       </li>
     );
   }
