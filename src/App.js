@@ -36,9 +36,7 @@ class App extends Component {
       <div>
         <h1>React</h1>
         <Message title="children!">
-          これはコンポーネント内のコンテンツです。
-          マルでテキストを分割し、リストにして表示します。
-          改行は必要ありません。
+          これはコンポーネント内のコンテンツです。マルでテキストを分割し、リストにして表示します。改行は必要ありません
         </Message>
       </div>
     );
@@ -55,7 +53,7 @@ class Message extends Component {
 
   render() {
     let content = this.props.children;
-    let arr = content.split("。 ");
+    let arr = content.split("。");
     let arr2 = [];
 
     for (let i = 0; i < arr.length; i++) {
@@ -65,13 +63,16 @@ class Message extends Component {
     }
     let list = arr2.map((value, key) => (
       <li style={this.li} key={key}>
-        {value}.
+        {value}。
       </li>
     ));
 
     return (
       <div>
         <h2>{this.props.title}</h2>
+        <p>content:{content}</p>
+        <p>arr: {arr}</p>
+        <p>arr2: {arr2}</p>
         <ol>{list}</ol>
       </div>
     );
